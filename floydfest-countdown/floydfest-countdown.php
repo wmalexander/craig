@@ -3,7 +3,7 @@
  * Plugin Name: FloydFest 2025 Countdown
  * Plugin URI: https://github.com/wmalexander/craig
  * Description: Displays a countdown timer for FloydFest 2025 (July 23-27, 2025) at the top of your website
- * Version: 0.2.0
+ * Version: 0.3.0
  * Author: Your Name
  * Author URI: https://yourwebsite.com
  * License: GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('FLOYDFEST_COUNTDOWN_VERSION', '0.2.0');
+define('FLOYDFEST_COUNTDOWN_VERSION', '0.3.0');
 define('FLOYDFEST_COUNTDOWN_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('FLOYDFEST_COUNTDOWN_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('FLOYDFEST_COUNTDOWN_PLUGIN_BASENAME', plugin_basename(__FILE__));
@@ -65,7 +65,9 @@ class FloydFest_Countdown {
         // Action hooks
         add_action('init', array($this, 'init'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));
-        add_action('wp_head', array($this, 'add_countdown_html'));
+        add_action('wp_body_open', array($this, 'add_countdown_html'), 1);
+        add_action('wp_head', array($this, 'add_custom_styles'));
+        add_filter('body_class', array($this, 'add_body_classes'));
         
         // Load text domain
         add_action('plugins_loaded', array($this, 'load_textdomain'));
@@ -172,12 +174,12 @@ class FloydFest_Countdown {
     }
     
     /**
-     * Add countdown HTML to the page
+     * Add custom styles to the page head
      */
-    public function add_countdown_html() {
+    public function add_custom_styles() {
         $options = get_option('floydfest_countdown_options');
         
-        // Only display if enabled
+        // Only add styles if enabled
         if (!isset($options['enabled']) || !$options['enabled']) {
             return;
         }
@@ -190,15 +192,69 @@ class FloydFest_Countdown {
         );
         
         echo '<style type="text/css">' . $custom_css . '</style>';
+    }
+    
+    /**
+     * Add body classes for countdown styling
+     */
+    public function add_body_classes($classes) {
+        $options = get_option('floydfest_countdown_options');
         
-        // Add body class for floating position
-        if ($options['position'] === 'floating') {
-            add_filter('body_class', function($classes) {
-                $classes[] = 'floydfest-countdown-floating-active';
-                return $classes;
-            });
+        // Only add classes if enabled
+        if (!isset($options['enabled']) || !$options['enabled']) {
+            return $classes;
         }
         
+        // Add base class
+        $classes[] = 'has-floydfest-countdown';
+        
+        // Add position-specific class
+        if ($options['position'] === 'top') {
+            $classes[] = 'floydfest-countdown-top-active';
+        } elseif ($options['position'] === 'floating') {
+            $classes[] = 'floydfest-countdown-floating-active';
+        }
+        
+        return $classes;
+    }
+    
+    /**
+     * Add countdown HTML to the page
+     */
+    public function add_countdown_html() {
+        $options = get_option('floydfest_countdown_options');
+        
+        // Only display if enabled
+        if (!isset($options['enabled']) || !$options['enabled']) {
+            return;
+        }
+        
+        // Fallback for themes without wp_body_open support
+        if (!did_action('wp_body_open')) {
+            add_action('wp_footer', array($this, 'add_countdown_html_fallback'), 1);
+            return;
+        }
+        
+        $this->output_countdown_html($options);
+    }
+    
+    /**
+     * Fallback method for themes without wp_body_open
+     */
+    public function add_countdown_html_fallback() {
+        // Prevent double output
+        if (did_action('wp_body_open')) {
+            return;
+        }
+        
+        $options = get_option('floydfest_countdown_options');
+        $this->output_countdown_html($options);
+    }
+    
+    /**
+     * Output the countdown HTML
+     */
+    private function output_countdown_html($options) {
         // Output countdown container
         echo '<div id="floydfest-countdown-container" class="floydfest-countdown-' . esc_attr($options['position']) . '">';
         echo '<div class="floydfest-countdown-inner">';
