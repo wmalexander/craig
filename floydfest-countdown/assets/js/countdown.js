@@ -1,15 +1,17 @@
 /**
  * FloydFest Countdown Frontend JavaScript
- * Version: 0.1.0
+ * Version: 0.3.0
  */
 
 (function() {
     'use strict';
 
-    // Wait for DOM to be ready
-    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize when DOM is ready or immediately if already loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCountdown);
+    } else {
         initCountdown();
-    });
+    }
 
     function initCountdown() {
         const countdownElement = document.getElementById('floydfest-countdown-timer');
@@ -18,15 +20,38 @@
             return;
         }
 
-        // Parse target date (July 23, 2025 10:00 AM EST)
-        // Convert timezone string to proper format
+        // Parse target date with timezone handling
         const dateString = window.floydFestCountdown.targetDate;
-        const targetDate = new Date(dateString + ' EST');
-        const options = window.floydFestCountdown.options;
+        const timezone = window.floydFestCountdown.timezone || 'America/New_York';
+        
+        // Create date in EST/EDT timezone
+        const targetDate = new Date(dateString.replace(' ', 'T') + '-05:00'); // EST offset
+        const options = window.floydFestCountdown.options || {};
 
+        // Ensure countdown container exists and is visible
+        ensureCountdownVisibility();
+        
         // Update countdown immediately and then every second
         updateCountdown();
-        setInterval(updateCountdown, 1000);
+        const interval = setInterval(updateCountdown, 1000);
+        
+        // Cleanup interval if container is removed
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    mutation.removedNodes.forEach(function(node) {
+                        if (node.nodeType === Node.ELEMENT_NODE && 
+                            (node.id === 'floydfest-countdown-container' || 
+                             node.contains(document.getElementById('floydfest-countdown-container')))) {
+                            clearInterval(interval);
+                            observer.disconnect();
+                        }
+                    });
+                }
+            });
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
 
         function updateCountdown() {
             const now = new Date();
@@ -77,6 +102,26 @@
 
         function padZero(num) {
             return num < 10 ? '0' + num : num;
+        }
+        
+        function ensureCountdownVisibility() {
+            const container = document.getElementById('floydfest-countdown-container');
+            if (!container) {
+                return;
+            }
+            
+            // Ensure countdown is not hidden by theme styles
+            const computedStyle = window.getComputedStyle(container);
+            if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') {
+                container.style.display = 'block';
+                container.style.visibility = 'visible';
+            }
+            
+            // Ensure z-index is high enough
+            const zIndex = parseInt(computedStyle.zIndex);
+            if (isNaN(zIndex) || zIndex < 999999) {
+                container.style.zIndex = '999999';
+            }
         }
     }
 

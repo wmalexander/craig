@@ -194,22 +194,32 @@ body.admin-bar #floydfest-countdown-container {
     }
 }
 
-/* Ensure body has padding to account for fixed countdown */
-body {
+/* Body adjustments for countdown positions */
+body.floydfest-countdown-top-active {
     padding-top: 60px !important;
 }
 
-body.admin-bar {
+body.floydfest-countdown-top-active.admin-bar {
     padding-top: 92px !important;
 }
 
 @media screen and (max-width: 782px) {
-    body.admin-bar {
+    body.floydfest-countdown-top-active.admin-bar {
         padding-top: 106px !important;
     }
 }
 
-/* When countdown is floating, remove body padding */
+/* When countdown is floating, no body padding needed */
 body.floydfest-countdown-floating-active {
-    padding-top: 0 !important;
+    padding-top: inherit;
+}
+
+/* Theme compatibility - ensure countdown stays on top */
+body.has-floydfest-countdown #floydfest-countdown-container {
+    z-index: 999999 !important;
+}
+
+/* Prevent theme overrides */
+#floydfest-countdown-container * {
+    box-sizing: border-box;
 }
