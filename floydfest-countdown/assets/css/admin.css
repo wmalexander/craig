@@ -1,0 +1,354 @@
+/**
+ * FloydFest Countdown Admin Styles
+ * Version: 0.4.0
+ */
+
+/* Admin Header */
+.floydfest-countdown-admin-header {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.floydfest-countdown-admin-header h2 {
+    margin: 0 0 10px 0;
+    color: #FF6B6B;
+    font-size: 24px;
+}
+
+.floydfest-countdown-admin-header p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Admin Content Layout */
+.floydfest-countdown-admin-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+    .floydfest-countdown-admin-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Settings Form */
+.floydfest-countdown-settings-form {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.floydfest-countdown-settings-form .form-table {
+    margin-top: 0;
+}
+
+.floydfest-countdown-settings-form .form-table th {
+    padding: 15px 10px 15px 0;
+    font-weight: 600;
+}
+
+.floydfest-countdown-settings-form .form-table td {
+    padding: 15px 10px;
+}
+
+/* Settings Sections */
+.floydfest-countdown-settings-form h2 {
+    border-bottom: 2px solid #FF6B6B;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #23282d;
+}
+
+.floydfest-countdown-settings-form p {
+    margin: 0 0 20px 0;
+    color: #666;
+}
+
+/* Form Fields */
+.floydfest-countdown-settings-form input[type="text"],
+.floydfest-countdown-settings-form select {
+    width: 100%;
+    max-width: 300px;
+}
+
+.floydfest-countdown-settings-form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.floydfest-countdown-settings-form .description {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Color Picker */
+.wp-picker-container {
+    margin-top: 5px;
+}
+
+.wp-picker-container .wp-color-result {
+    border-radius: 3px;
+}
+
+/* Preview Section */
+.floydfest-countdown-preview {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: sticky;
+    top: 32px;
+    height: fit-content;
+}
+
+.floydfest-countdown-preview h3 {
+    margin: 0 0 15px 0;
+    color: #23282d;
+    font-size: 18px;
+}
+
+#countdown-preview {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+#preview-container {
+    position: relative;
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.preview-inner {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.preview-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.preview-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.preview-timer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.preview-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.preview-unit:last-child {
+    border-right: none;
+}
+
+.preview-number {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.preview-unit .preview-unit-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+.preview-loading {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.preview-days-only {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.preview-compact {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Floating Preview */
+.preview-floating {
+    position: relative;
+    display: inline-block;
+    border-radius: 6px;
+    max-width: 250px;
+}
+
+.preview-floating .preview-inner {
+    padding: 12px 15px;
+}
+
+.preview-floating .preview-content {
+    gap: 8px;
+}
+
+.preview-floating .preview-label {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+
+.preview-floating .preview-timer {
+    gap: 8px;
+}
+
+.preview-floating .preview-number {
+    font-size: 16px;
+}
+
+.preview-floating .preview-unit-label {
+    font-size: 9px;
+}
+
+/* Admin Info */
+.floydfest-countdown-admin-info {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.floydfest-countdown-admin-info h3 {
+    margin: 0 0 15px 0;
+    color: #23282d;
+    font-size: 18px;
+}
+
+.floydfest-countdown-admin-info ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.floydfest-countdown-admin-info li {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.floydfest-countdown-admin-info li strong {
+    color: #23282d;
+}
+
+/* Submit Button */
+.floydfest-countdown-settings-form .submit {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.floydfest-countdown-settings-form .submit .button-primary {
+    background: #FF6B6B;
+    border-color: #FF6B6B;
+    text-shadow: none;
+    box-shadow: none;
+    font-weight: 600;
+    padding: 8px 20px;
+}
+
+.floydfest-countdown-settings-form .submit .button-primary:hover {
+    background: #ff5252;
+    border-color: #ff5252;
+}
+
+.floydfest-countdown-settings-form .submit .button-primary:active {
+    background: #e53935;
+    border-color: #e53935;
+}
+
+/* Settings Updated Message */
+.notice.settings-error {
+    margin: 5px 0 15px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .floydfest-countdown-admin-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .floydfest-countdown-preview {
+        position: static;
+        order: -1;
+    }
+    
+    .preview-content {
+        gap: 10px;
+    }
+    
+    .preview-label {
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .preview-timer {
+        gap: 8px;
+    }
+    
+    .preview-number {
+        font-size: 16px;
+    }
+    
+    .preview-unit-label {
+        font-size: 9px;
+    }
+}
+
+/* WordPress Core Overrides */
+.wrap .floydfest-countdown-admin-header + .notice {
+    margin-top: 20px;
+}
+
+.floydfest-countdown-settings-form .form-table .color-picker {
+    width: auto;
+    max-width: none;
+}
+
+/* Loading Animation */
+@keyframes preview-pulse {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.preview-loading {
+    animation: preview-pulse 1.5s infinite;
+}

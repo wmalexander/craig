@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-01-09
+
+### Added
+- **Complete Admin Interface**: Full-featured settings page in WordPress admin
+- **Color Picker Integration**: WordPress color picker for background and text colors
+- **Position Controls**: Toggle between top bar and floating corner positioning
+- **Display Format Options**: Choose between full, days only, or compact formats
+- **Real-time Preview**: Live preview of countdown appearance while configuring
+- **Settings Validation**: Form validation and sanitization for all options
+- **Responsive Admin Design**: Mobile-friendly admin interface
+- **Admin Asset Management**: Proper enqueueing of admin CSS and JavaScript
+
+### Changed
+- Enhanced admin class with complete settings page implementation
+- Added proper WordPress Settings API integration
+- Improved options structure with validation and sanitization
+- Better user experience with organized settings sections
+
+### Fixed
+- Proper capability checks for admin access
+- Form validation for color inputs
+- Settings persistence and retrieval
+
 ## [0.3.0] - 2025-01-09
 
 ### Added
@@ -70,6 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - This is the initial commit establishing the project foundation
 - No functional code yet, only planning documentation
 
+[0.4.0]: https://github.com/wmalexander/craig/releases/tag/v0.4.0
 [0.3.0]: https://github.com/wmalexander/craig/releases/tag/v0.3.0
 [0.2.0]: https://github.com/wmalexander/craig/releases/tag/v0.2.0
 [0.1.0]: https://github.com/wmalexander/craig/releases/tag/v0.1.0
