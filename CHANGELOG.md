@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2025-01-09
+
 ### Added
 - Core plugin structure with main plugin file
 - Basic activation/deactivation hooks
@@ -27,4 +29,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - This is the initial commit establishing the project foundation
 - No functional code yet, only planning documentation
 
-[0.0.0]: https://github.com/yourusername/floydfest-countdown/releases/tag/v0.0.0
+[0.1.0]: https://github.com/wmalexander/craig/releases/tag/v0.1.0
+[0.0.0]: https://github.com/wmalexander/craig/releases/tag/v0.0.0
