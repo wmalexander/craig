@@ -3,7 +3,7 @@
  * Plugin Name: FloydFest 2025 Countdown
  * Plugin URI: https://github.com/wmalexander/craig
  * Description: Displays a countdown timer for FloydFest 2025 (July 23-27, 2025) at the top of your website
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: Your Name
  * Author URI: https://yourwebsite.com
  * License: GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('FLOYDFEST_COUNTDOWN_VERSION', '0.1.0');
+define('FLOYDFEST_COUNTDOWN_VERSION', '0.2.0');
 define('FLOYDFEST_COUNTDOWN_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('FLOYDFEST_COUNTDOWN_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('FLOYDFEST_COUNTDOWN_PLUGIN_BASENAME', plugin_basename(__FILE__));
