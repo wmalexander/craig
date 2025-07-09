@@ -191,6 +191,14 @@ class FloydFest_Countdown {
         
         echo '<style type="text/css">' . $custom_css . '</style>';
         
+        // Add body class for floating position
+        if ($options['position'] === 'floating') {
+            add_filter('body_class', function($classes) {
+                $classes[] = 'floydfest-countdown-floating-active';
+                return $classes;
+            });
+        }
+        
         // Output countdown container
         echo '<div id="floydfest-countdown-container" class="floydfest-countdown-' . esc_attr($options['position']) . '">';
         echo '<div class="floydfest-countdown-inner">';

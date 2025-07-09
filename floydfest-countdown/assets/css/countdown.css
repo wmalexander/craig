@@ -3,4 +3,213 @@
  * Version: 0.1.0
  */
 
-/* Placeholder - will be implemented in Phase 2 */
+/* Countdown Container */
+#floydfest-countdown-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    z-index: 999999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Admin bar adjustment */
+body.admin-bar #floydfest-countdown-container {
+    top: 32px;
+}
+
+/* Mobile admin bar adjustment */
+@media screen and (max-width: 782px) {
+    body.admin-bar #floydfest-countdown-container {
+        top: 46px;
+    }
+}
+
+/* Inner container */
+.floydfest-countdown-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+}
+
+/* Content wrapper */
+.floydfest-countdown-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Countdown label */
+.floydfest-countdown-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* Timer container */
+.floydfest-countdown-timer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Countdown units */
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.countdown-unit:last-child {
+    border-right: none;
+}
+
+.countdown-number {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    display: block;
+}
+
+.countdown-unit .countdown-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+/* Loading state */
+.countdown-loading {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Countdown ended */
+.countdown-ended {
+    font-size: 18px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+/* Days only format */
+.countdown-days-only {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Compact format */
+.countdown-compact {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Floating position */
+.floydfest-countdown-floating {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    right: auto;
+    width: auto;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+.floydfest-countdown-floating .floydfest-countdown-inner {
+    padding: 15px 20px;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .floydfest-countdown-content {
+        gap: 10px;
+    }
+    
+    .floydfest-countdown-label {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .countdown-unit {
+        padding: 0 8px;
+    }
+    
+    .countdown-number {
+        font-size: 20px;
+    }
+    
+    .countdown-unit .countdown-label {
+        font-size: 10px;
+    }
+    
+    .floydfest-countdown-timer {
+        gap: 10px;
+    }
+    
+    .floydfest-countdown-floating {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        max-width: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .floydfest-countdown-inner {
+        padding: 8px 15px;
+    }
+    
+    .countdown-number {
+        font-size: 18px;
+    }
+    
+    .countdown-days-only,
+    .countdown-ended {
+        font-size: 16px;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Ensure body has padding to account for fixed countdown */
+body {
+    padding-top: 60px !important;
+}
+
+body.admin-bar {
+    padding-top: 92px !important;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar {
+        padding-top: 106px !important;
+    }
+}
+
+/* When countdown is floating, remove body padding */
+body.floydfest-countdown-floating-active {
+    padding-top: 0 !important;
+}
